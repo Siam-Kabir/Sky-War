@@ -1,0 +1,66 @@
+<head>
+    <!-- Add Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div id="uiContainer">
+        <!-- <div> -->
+            <img id="gameName" src="https://i.ibb.co/CnRg32w/gamename1.png" alt="Sky War" class="small-image">
+        <!-- </div> -->
+        <button id="startButton"
+            class="relative px-10 py-5 text-xl font-bold text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full shadow-lg hover:scale-110 hover:shadow-2xl transform transition-all duration-300 active:scale-95 active:shadow-md">
+            <img src="https://i.ibb.co.com/wMYGmKw/start.png" alt="Start Game" class="start-button-image">
+        </button>
+    </div>
+    <canvas id="gameCanvas" class="hidden absolute inset-0 z-10"></canvas>
+    <div id="scoreContainer" class="absolute top-4 left-4 text-white text-lg hidden">
+        <span id="scoreLabel" class="font-bold">Score:</span>
+        <span id="scoreValue">0</span>
+    </div>
+
+    <div id="gameOverScreen" class="hidden absolute inset-0 bg-black/70 z-50" >
+    <img  id="gameOverText" class="text-6xl font-bold text-red-500 drop-shadow-lg mb-4 animate-bounce"src="https://i.ibb.co.com/0ZMpsth/gameover.png" alt="game over">
+    <p id="finalScore" class="text-2xl text-white mb-6">Score: <span id="finalScoreValue">0</span></p>
+    <button id="retryButton"
+        class="px-8 py-4 text-2xl font-bold text-white bg-gradient-to-r from-red-500 to-yellow-500 rounded-lg shadow-lg hover:scale-110 hover:shadow-2xl transform transition-all duration-300 active:scale-95">
+        Retry
+    </button>
+</div>
+
+    <div class="absolute inset-0 z-0 overflow-hidden">
+        <!-- Stars for animated background -->
+        <div class="star" style="width: 2px; height: 2px; top: 10%; left: 15%; animation-duration: 2s;"></div>
+        <div class="star" style="width: 3px; height: 3px; top: 30%; left: 50%; animation-duration: 3s;"></div>
+        <div class="star" style="width: 2px; height: 2px; top: 70%; left: 20%; animation-duration: 2.5s;"></div>
+        <div class="star" style="width: 4px; height: 4px; top: 80%; left: 60%; animation-duration: 4s;"></div>
+        <div class="star" style="width: 1px; height: 1px; top: 50%; left: 90%; animation-duration: 1.5s;"></div>
+        <!-- Floating elements -->
+        <span class="absolute w-10 h-10 bg-blue-500 bg-opacity-20 rounded-full"
+            style="top: 80%; left: 10%; animation: float 6s infinite;"></span>
+        <span class="absolute w-6 h-6 bg-teal-500 bg-opacity-20 rounded-full"
+            style="top: 50%; left: 30%; animation: float 4s infinite;"></span>
+        <span class="absolute w-12 h-12 bg-cyan-500 bg-opacity-20 rounded-full"
+            style="top: 30%; left: 70%; animation: float 7s infinite;"></span>
+        <span class="absolute w-8 h-8 bg-blue-400 bg-opacity-20 rounded-full"
+            style="top: 60%; left: 90%; animation: float 5s infinite;"></span>
+        <span class="absolute w-8 h-8 bg-teal-400 bg-opacity-20 rounded-full"
+            style="top: 20%; left: 40%; animation: float 8s infinite;"></span>
+    </div>
+    <audio id="backgroundMusic" loop>
+        <source src="src/assets/music/backgroundMusic.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="explosionSound">
+        <source src="src/assets/music/explosion.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="hitSound">
+        <source src="src/assets/music/hit.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div id="pauseButton" class="hidden">
+        <span id="pauseIcon"><i class="fa-solid fa-pause fa-beat-fade fa-xl" style="color: #ffffff;"></i></span>
+        <span id="resumeIcon" class="hidden"><i class="fa-solid fa-play fa-bounce fa-xl" style="color: #ffffff;"></i></span>
+    </div>
+    
+</body>

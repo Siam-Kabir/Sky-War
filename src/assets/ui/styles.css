@@ -1,0 +1,319 @@
+html ,body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    
+    /* background-color: #000;  */
+    /* Set a background color */
+    font-family: Arial, sans-serif;
+}
+#gameUI{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+#uiContainer{
+    /* border: 20px solid green; */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    /* background-color: #000;  */
+    /* Set a background color */
+    font-family: Arial, sans-serif;
+}
+body {
+    display: flex;
+    justify-content: center;
+    /* border: 20px solid rgb(255, 0, 0); */
+    /* position: relative; */
+    background: url('../images/background.jpg') no-repeat center center fixed;
+
+    background-repeat: repeat-y;
+    background-size: cover;
+    animation: backgroundMotion 30s linear infinite; /* Adjust duration and easing as needed */
+}
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Shadow effect */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* Inner shadow */
+    z-index: 1;
+}
+#gameContainer {
+    /* background-color: #000; */
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#startButton {
+    /* position: absolute; */
+    /* top: 50%;
+    left: 50%; */
+    height: 70px;
+    width: 180px;
+    font-size: 20px;
+    /* transform: translate(-50%, -50%); */
+    /* animation: pulse 1.5s infinite ease-in-out; */
+    cursor: pointer;
+    z-index: 12;
+}
+.small-image {
+    width: 100%; /* Set the width to 100% of the container */
+    height: auto; /* Maintain the aspect ratio */
+    max-width: 100%; /* Optional: Set a maximum width */
+    display: block; /* Ensure the image is displayed as a block element */
+    margin: 0 auto; /* Center the image horizontally */
+}
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(255, 105, 180, 0.8), 0 0 20px rgba(255, 105, 180, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 105, 180, 1), 0 0 40px rgba(255, 105, 180, 0.9);
+    }
+}
+.start-button-image {
+    width: 100%; /* Set the width to 100% of the button */
+    max-width: 100%;
+    height: auto; /* Maintain the aspect ratio */
+    display: block; /* Ensure the image is displayed as a block element */
+    margin: 0 auto; /* Center the image horizontally */
+}
+#gameName{
+    position: relative;
+    display: block;
+   max-height: 50%;
+    width: auto;
+    z-index: 12;
+}
+
+#gameCanvas {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+#scoreContainer {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif; /* More modern font */
+    text-align: center;
+    background: linear-gradient(135deg, #1e1c1c, #000000); /* Cool gradient background */
+    border-radius: 15px; /* Rounded corners for a sleek look */
+    padding: 5px 10px; /* Added padding for better spacing */
+    color: white;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5); /* More defined text shadow */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Adding depth with a soft shadow */
+    border: none; /* Removing the yellow border */
+    animation: pulse 1.5s infinite; /* Subtle pulsing effect to draw attention */
+    z-index: 10;
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+#scoreContainer:hover {
+
+    transform: scale(1.1); /* Slightly enlarges the container when hovered */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-500px) rotate(360deg);
+        opacity: 0;
+    }
+}
+@keyframes backgroundMotion {
+    0% {
+        background-position: center bottom;
+    }
+    100% {
+        background-position: center top;
+    }
+}
+
+@keyframes star-twinkle {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+#pauseButton {
+    /* width: 200px;
+    height: 200px; */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #49494900;
+    color: rgba(255, 255, 255, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 30; /* Ensure it is above other elements */
+}
+
+#gameOverScreen {
+    display: none; /* Hidden at start */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+    position: absolute; /* Ensure it covers the screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    z-index: 50; /* Ensure it's on top */
+    animation: fadeIn 1s ease-in-out forwards;
+}
+#gameOverText{
+    position: relative;
+    /* width: 70%; */
+    max-height: 70%;
+    max-width: 70%;
+}
+
+#retryButton {
+    display: grid; /* Ensures place-items works correctly */
+    place-items: center; /* Center content */
+    font-size: 1.5rem; /* Large font size for visibility */
+    font-weight: bold; /* Bold text */
+    color: #fff; /* White text */
+    background: linear-gradient(135deg, #f71010, #cac607); /* Gradient background */
+    border: 3px solid #ffffff; /* Solid red border */
+    border-radius: 15px; /* Rounded corners */
+    text-shadow: 2px 2px 8px rgba(255, 0, 0, 0.8); /* Text glow */
+    box-shadow: 
+        0 0 20px rgba(255, 0, 0, 0.8), 
+        0 0 40px rgba(255, 0, 0, 0.6); /* Outer glow effect */
+    padding: 10px 30px; /* Padding for better spacing */
+    cursor: pointer; /* Pointer cursor on hover */
+    animation: pulseGlow 1.5s infinite alternate; /* Glowing animation */
+    transition: transform 0.2s ease-in-out; /* Smooth scaling on hover */
+}
+
+#retryButton:hover {
+    transform: scale(1.1); /* Slight scale on hover */
+    box-shadow: 
+        0 0 30px rgba(255, 0, 0, 1), 
+        0 0 50px rgba(255, 0, 0, 0.8); /* Intensify glow on hover */
+}
+
+/* Glowing animation */
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 
+            0 0 20px rgba(255, 0, 0, 0.8), 
+            0 0 40px rgba(255, 0, 0, 0.6);
+    }
+    100% {
+        box-shadow: 
+            0 0 30px rgba(255, 0, 0, 1), 
+            0 0 60px rgba(255, 0, 0, 0.9);
+    }
+}
+
+
+/* #finalScore {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 2rem;
+} */
+
+#finalScore {
+    padding-top: 20px;
+    font-size: 1.3rem; /* Larger font for emphasis */
+    font-weight: bold; /* Make the text bold */
+    color: #ffffff; /* Golden color for premium look */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.6); /* Glowing effect */
+    margin-bottom: 2rem;
+    text-align: center; /* Center-align the text */
+    letter-spacing: 1px; /* Slight spacing between letters */
+    animation: pulse 2s infinite ease-in-out; /* Add a pulsing animation */
+}
+
+/* Keyframe animation for pulsing effect */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+#retryButton:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.6);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulseGlow {
+    from {
+        text-shadow: 0 0 20px #ff4b2b, 0 0 40px #ff416c;
+    }
+    to {
+        text-shadow: 0 0 40px #ff416c, 0 0 60px #ff4b2b;
+    }
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 100%;
+    animation: star-twinkle 2s infinite;
+    z-index: 15;
+}
